@@ -23,10 +23,30 @@ int main(int argc, char *argv[]) {
 
     if (window == NULL) return 1;
 
-    SDL_Event windowEvent;
-    while (true) {
-        if (SDL_PollEvent(&windowEvent)) {
-            if (SDL_QUIT == windowEvent.type) break;
+    SDL_Event event;
+    bool quit = false;
+
+    while (!quit) {
+        if (SDL_PollEvent(&event)) {
+            switch (event.type) {
+                case SDL_QUIT: {
+                    quit = true;
+                    break;
+                }  
+            
+                case SDL_KEYDOWN: {
+                    switch (event.key.keysym.sym) {
+                        case SDLK_ESCAPE: { 
+                            quit = true; 
+                            break;
+                        }
+                        
+                        default: { break; }
+                    }
+
+                    break;
+			    } 
+            }
         }
     }
 

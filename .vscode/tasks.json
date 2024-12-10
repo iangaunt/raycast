@@ -13,6 +13,7 @@
                 "-L${workspaceFolder}/lib",
 
 
+                "${workspaceFolder}/src/shapes/*.cpp",
                 "${workspaceFolder}/src/*.cpp",
 
                 "-lmingw32",

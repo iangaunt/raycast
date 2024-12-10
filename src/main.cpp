@@ -1,4 +1,5 @@
 #include <iostream>
+#include <math.h>
 #include <SDL2/SDL.h>
 
 #include "headers/scene.h"
@@ -32,9 +33,9 @@ int main(int argc, char *argv[]) {
     SDL_Event event;
     bool quit = false;
 
-    scene* s = new scene(WIDTH, HEIGHT, 0, 10);
-    s->add(new sphere(3, -1, -1, 6, 0xFF0000));
-    s->add(new sphere(3, 1, 1, 6, 0x0000FF));
+    scene* s = new scene(WIDTH, HEIGHT, 0, 20);
+    sphere* red = new sphere(3.7, -1, -0.5, 0xb1adee, 6);
+    s->add(red);
 
     while (!quit) {
         s->generate();

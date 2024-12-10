@@ -1,6 +1,6 @@
 #include "headers/sphere.h"
 
-sphere::sphere(double xh, double yh, double zh, double rh, int colorh) {
+sphere::sphere(double xh, double yh, double zh, int colorh, double rh) {
     x = xh;
     y = yh;
     z = zh;

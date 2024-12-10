@@ -5,6 +5,10 @@
 #include <cmath>
 #include <iostream>
 
+int max(double a, double b) {
+    return a > b ? a : b;
+}
+
 scene::scene(int w, int h, int inner_windowh, int outer_windowh) {
     width = w;
     height = h;
@@ -50,23 +54,15 @@ void scene::generate() {
                         double d = (t - inner_window) / (outer_window - inner_window) * 10;
 
                         int r = k->color >> 16;
-                        int g = k->color & 0x00FF00 >> 8;
+                        int g = (k->color & 0x00FF00) >> 8;
                         int b = k->color & 0x0000FF;
 
-                        int r_fixed = (double) (r) * (1 - d);
-                        int g_fixed = (double) (g) * (1 - d);
-                        int b_fixed = (double) (b) * (1 - d);
-
-                        if (r_fixed < 0) r_fixed = 0;
-                        if (g_fixed < 0) g_fixed = 0;
-                        if (b_fixed < 0) b_fixed = 0;
-
-                        // std::cout << r_fixed << " " << g_fixed << " " << b_fixed << std::endl;
+                        int r_fixed = max(0, (double) (r) * (1 - d));
+                        int g_fixed = max(0, (double) (g) * (1 - d));
+                        int b_fixed = max(0, (double) (b) * (1 - d));
 
                         int col_fixed = ((r_fixed << 16) | (g_fixed << 8) | b_fixed);
-
-                        // std::cout << std::hex << col_fixed << std::endl;
-
+                        
                         pixels[(int) (i) + (int) (j) * width] = col_fixed;
                         touched = true;
                         break;

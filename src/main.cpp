@@ -34,8 +34,8 @@ int main(int argc, char *argv[]) {
     bool quit = false;
 
     scene* s = new scene(WIDTH, HEIGHT, 0, 20);
-    sphere* red = new sphere(3.7, -1, -0.5, 0xb1adee, 6);
-    s->add(red);
+    s->add(new sphere(3.7, -1, -0.5, 0xb1adee, 6));
+    s->add(new sphere(4.2, 1, 1.25, 0x0000FF, 9));
 
     while (!quit) {
         s->generate();

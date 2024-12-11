@@ -39,8 +39,6 @@ void scene::generate() {
 
             bool touched = false;
 
-            // std::cout << v->xi << " " << v->yj << " " << v->zk << std::endl;
-
             for (double t = inner_window; t < outer_window; t += 0.01) {
                 v->calculate_t(t);
                 
@@ -49,8 +47,7 @@ void scene::generate() {
                 for (int s = 0; s < spheres.size(); s++) {
                     if (spheres.at(s)->contains(v->x, v->y, v->z)) {
                         sphere* k = spheres.at(s);
-                        // std::cout << "(" << v->x << ", " << v->y << ", " << v->z << ")" << std::endl;
-
+                        
                         double d = (t - inner_window) / (outer_window - inner_window) * 10;
 
                         int r = k->color >> 16;

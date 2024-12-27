@@ -51,8 +51,8 @@ void scene::generate() {
                         double u = t - 0.447;
                         v->calculate_t(u);
 
-                        while (!k->contains(v->x, v->y, v->z)) {
-                            u += 0.01;
+                        while (!k->contains(v->x, v->y, v->z) && u < t) {
+                            u += 0.025;
                             v->calculate_t(u);
                         }
                         t = u;

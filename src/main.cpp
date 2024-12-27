@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include <iostream>
 #include <math.h>
 #include <SDL2/SDL.h>
@@ -34,8 +35,11 @@ int main(int argc, char *argv[]) {
     bool quit = false;
 
     scene* s = new scene(WIDTH, HEIGHT, 0, 20);
-    s->add(new sphere(3.7, -1, -0.5, 0xb1adee, 6));
-    s->add(new sphere(4.2, 1, 1.25, 0x0000FF, 9));
+    s->add(new sphere(4.4, 1, 1.25, 0x0000FF, 9));
+
+    sphere* red = new sphere(3.7, -1, -0.5, 0xb1adee, 6);
+    s->add(red);
+    double t = 0.0;
 
     while (!quit) {
         s->generate();
@@ -44,6 +48,9 @@ int main(int argc, char *argv[]) {
         SDL_RenderClear(renderer);
         SDL_RenderCopy(renderer, texture, nullptr, nullptr);
         SDL_RenderPresent(renderer);
+
+        t += 0.05;
+        red->r = abs(sin(t)) * 6;
 
         if (SDL_PollEvent(&event)) {
             switch (event.type) {

@@ -15,6 +15,7 @@ class sphere: public shape {
         sphere(double xh, double yh, double zh, int colorh) : shape(xh, yh, zh, colorh) {}
         sphere(double xh, double yh, double zh, int colorh, double rh);
         bool contains(double xp, double yp, double zp);
+        bool in_bounding_box(double xp, double yp, double zp);
 };
 
 #endif

@@ -1,5 +1,11 @@
 #include "headers/sphere.h"
 
+#include <cstdlib>
+#include <iostream>
+
+using std::cout;
+using std::endl;
+
 sphere::sphere(double xh, double yh, double zh, int colorh, double rh) {
     x = xh;
     y = yh;

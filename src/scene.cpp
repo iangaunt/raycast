@@ -39,7 +39,7 @@ void scene::generate() {
 
             bool touched = false;
 
-            for (double t = inner_window; t < outer_window; t += 0.01) {
+            for (double t = inner_window; t < outer_window; t += 1) {
                 v->calculate_t(t);
                 
                 if (touched) break;
@@ -47,7 +47,16 @@ void scene::generate() {
                 for (int s = 0; s < spheres.size(); s++) {
                     if (spheres.at(s)->contains(v->x, v->y, v->z)) {
                         sphere* k = spheres.at(s);
-                        
+
+                        double u = t - 1;
+                        v->calculate_t(u);
+
+                        while (!k->contains(v->x, v->y, v->z)) {
+                            u += 0.01;
+                            v->calculate_t(u);
+                        }
+                        t = u;
+
                         double d = (t - inner_window) / (outer_window - inner_window) * 10;
 
                         int r = k->color >> 16;

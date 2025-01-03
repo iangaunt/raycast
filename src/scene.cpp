@@ -38,8 +38,10 @@ void scene::generate() {
             );
 
             bool touched = false;
+            sphere* shortest;
+            double shortest_distance = 100.0;
 
-            for (double t = inner_window; t < outer_window; t += 0.447) {
+            for (double t = inner_window; t < outer_window; t += 1) {
                 v->calculate_t(t);
                 
                 if (touched) break;
@@ -48,7 +50,7 @@ void scene::generate() {
                     if (spheres.at(s)->contains(v->x, v->y, v->z)) {
                         sphere* k = spheres.at(s);
 
-                        double u = t - 0.447;
+                        double u = t - 1;
                         v->calculate_t(u);
 
                         while (!k->contains(v->x, v->y, v->z) && u < t) {

@@ -36,10 +36,10 @@ int main(int argc, char *argv[]) {
 
     scene* s = new scene(WIDTH, HEIGHT, 0, 20);
 
-    sphere* red = new sphere(3.7, -1, -0.5, 0xFFFFFF, 6);
+    sphere* red = new sphere(3.7, -1, -0.5, 0xFF0000, 6);
     s->add(red);
 
-    sphere* blue = new sphere(4.4, 1, 1.25, 0xBBBBBB, 9);
+    sphere* blue = new sphere(4.4, 1, 1.25, 0x0000FF, 9);
     s->add(blue);
 
     double t = 0.0;

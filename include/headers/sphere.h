@@ -1,9 +1,7 @@
 #ifndef SPHERE_H
 #define SPHERE_H
 
-#include "shape.h"
-
-class sphere: public shape {
+class sphere {
     public: 
         double x;
         double y;
@@ -12,10 +10,8 @@ class sphere: public shape {
 
         double r;
 
-        sphere(double xh, double yh, double zh, int colorh) : shape(xh, yh, zh, colorh) {}
         sphere(double xh, double yh, double zh, int colorh, double rh);
         bool contains(double xp, double yp, double zp);
-        bool in_bounding_box(double xp, double yp, double zp);
 };
 
 #endif
